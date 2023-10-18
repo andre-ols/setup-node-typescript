@@ -1,0 +1,22 @@
+{
+  "extends": "@electron-toolkit/tsconfig/tsconfig.node.json",
+  "include": [],
+	"compilerOptions": {
+    "module": "ESNext",
+		"sourceMap": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["*"]
+    },
+    "skipLibCheck": true,
+    "types": [
+      "node",
+      "jest",
+    ],
+  },
+  "exclude": ["node_modules", "coverage", "dist"],
+}
