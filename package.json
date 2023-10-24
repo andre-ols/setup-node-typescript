@@ -3,6 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start:dev": "nodemon --exec ts-node src/index.ts",
+    "build": "tsc",
+    "start:prod": "node dist/index.js",
+    "start:docker:dev": "docker compose up -d --build --force-recreate dev",
+    "start:docker:prod": "docker compose up -d --build --force-recreate prod"
+  },
   "devDependencies": {
     "@types/express": "^4.17.20",
     "@types/node": "^20.8.7",
