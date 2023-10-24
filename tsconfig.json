@@ -1,6 +1,4 @@
 {
-  "extends": "@electron-toolkit/tsconfig/tsconfig.node.json",
-  "include": [],
 	"compilerOptions": {
     "module": "CommonJS",
 		"sourceMap": true,
@@ -15,8 +13,7 @@
     "skipLibCheck": true,
     "types": [
       "node",
-      "jest",
     ],
   },
-  "exclude": ["node_modules", "coverage", "dist"],
+  "exclude": ["node_modules"],
 }
