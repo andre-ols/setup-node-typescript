@@ -1,5 +1,6 @@
 export class Playlist {
   private tracks: Track[] = [];
+  private _loop: boolean = false;
   constructor(private id: string, private name: string, tracks?: Track[]) {
     this.id = id;
     this.name = name;
@@ -16,6 +17,10 @@ export class Playlist {
 
   public getCurrentTrack(): Track {
     return this.tracks[0];
+  }
+
+  public loop(value: boolean): void {
+    this._loop = value;
   }
 
   public getNextTrack(): Track {
