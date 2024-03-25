@@ -11,10 +11,13 @@
     "docker:prod": "docker compose up -d --build --force-recreate prod"
   },
   "devDependencies": {
-    "@types/node": "^20.8.7",
+    "@types/node": "^20.11.30",
+    "@types/throttle": "^1.0.4",
     "nodemon": "^3.0.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "throttle": "^1.0.3"
+  }
 }
