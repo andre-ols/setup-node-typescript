@@ -1,5 +1,5 @@
+import { Queue } from "../../utils/queue";
 import { Track } from "./track";
-
 export class Playlist {
   private tracks: Track[] = [];
   private _loop: boolean = false;
