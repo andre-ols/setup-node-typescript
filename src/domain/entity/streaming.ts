@@ -1,14 +1,15 @@
 import { createReadStream } from "fs";
+import { PassThrough } from "stream";
 import Throttle from "throttle";
 import { Playlist } from "./playlist";
 
 export class Streaming {
-  private throttleStream: Throttle;
+  passThrough: NodeJS.ReadWriteStream;
   constructor(private playlist: Playlist, private bitrate: number = 320) {
-    this.throttleStream = new Throttle(this.bitrate);
+    this.passThrough = new PassThrough();
   }
 
-  public play(): Throttle {
+  public play() {
     const currentTrack = this.playlist.getCurrentTrack();
 
     if (!currentTrack) {
@@ -20,18 +21,22 @@ export class Streaming {
 
     const stream = createReadStream(currentTrack.getPath());
 
-    stream.pipe(this.throttleStream);
+    const throttleStream = new Throttle((this.bitrate * 1000) / 8);
 
-    this.throttleStream.on("end", () => {
+    stream.pipe(throttleStream);
+
+    throttleStream.on("end", () => {
       console.log("Song ended, starting next song");
       this.playlist.nextTrack();
       this.play();
     });
 
-    this.throttleStream.on("error", (error) => {
-      console.error("An error occurred while streaming the song", error);
+    throttleStream.on("data", (chunk) => {
+      this.passThrough.write(chunk);
     });
 
-    return this.throttleStream;
+    throttleStream.on("error", (error) => {
+      console.error("An error occurred while streaming the song", error);
+    });
   }
 }
