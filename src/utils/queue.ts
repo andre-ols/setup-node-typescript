@@ -5,27 +5,42 @@ class Queue<T> {
     this.items = [];
   }
 
-  // Add a new item to the end of the queue
+  /**
+   *  The `enqueue()` method adds an element to the end of the queue.
+   * @param item The element to add to the queue.
+   */
   enqueue(item: T): void {
     this.items.push(item);
   }
 
-  // Remove the first item from the queue
+  /**
+   * The `dequeue()` method removes the first element from the queue and returns it. If the queue is empty, the method returns `undefined`.
+   * @returns The first element of the queue if the queue is not empty; otherwise, it returns `undefined`.
+   */
   dequeue(): T | undefined {
     return this.items.shift();
   }
 
-  // Return the first item without removing it
+  /**
+   * The `peek()` method returns the first element of the queue without removing it. If the queue is empty, the method returns `undefined`.
+   * @returns The `peek()` method returns the first element of the queue if the queue is not empty; otherwise, it returns `undefined`.
+   */
   peek(): T | undefined {
     return this.items[0];
   }
 
-  // Verify if the queue is empty
+  /**
+   * The `isEmpty()` method returns `true` if the queue is empty; otherwise, it returns `false`.
+   * @returns `true` if the queue is empty; otherwise, `false`.
+   */
   isEmpty(): boolean {
     return this.items.length === 0;
   }
 
-  // Return the size of the queue
+  /**
+   * The `size()` method returns the number of elements in the queue.
+   * @returns The number of elements in the queue.
+   */
   size(): number {
     return this.items.length;
   }
