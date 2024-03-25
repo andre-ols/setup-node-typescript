@@ -1,6 +1,6 @@
-version: '3.8'
+version: "3.8"
 
-services: 
+services:
   dev:
     container_name: api_dev
     build:
@@ -9,10 +9,10 @@ services:
       dockerfile: Dockerfile
     restart: "no"
     volumes:
-      - './src/:/app/src/'
+      - "./src/:/app/src/"
     command: bash -c "yarn start:dev"
     ports:
-      - '3000:3000'
+      - "3000:3000"
     environment:
       - NODE_ENV=development
 
@@ -25,6 +25,6 @@ services:
     restart: always
     command: bash -c "yarn start"
     ports:
-      - '3000:3000'
+      - "3000:3000"
     environment:
       - NODE_ENV=production
