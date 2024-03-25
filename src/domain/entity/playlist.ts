@@ -1,3 +1,5 @@
+import { Track } from "./track";
+
 export class Playlist {
   private tracks: Track[] = [];
   private _loop: boolean = false;
@@ -24,15 +26,15 @@ export class Playlist {
     this._loop = value;
   }
 
-  public nextTrack(): Track {
+  public nextTrack(): Track | undefined {
     const lastSong = this.queue.dequeue();
-    if (this._loop) {
+    if (this._loop && lastSong) {
       this.queue.enqueue(lastSong);
     }
     return this.queue.peek();
   }
 
-  public getCurrentTrack(): Track {
+  public getCurrentTrack(): Track | undefined {
     return this.queue.peek();
   }
 
